@@ -355,8 +355,8 @@ function updateMap(fit){
       const pm=ensurePm(p); setIcon(pm,'#c3c8d2',7,100); dim.push(pm);
     }
   });
-  dimColl.add(dim);
-  if(S.cluster){ clusterer.add(hi); map.geoObjects.add(clusterer); } else { hiColl.add(hi); map.geoObjects.add(hiColl); }
+  dim.forEach(x=>dimColl.add(x));
+  if(S.cluster){ clusterer.add(hi); map.geoObjects.add(clusterer); } else { hi.forEach(x=>hiColl.add(x)); map.geoObjects.add(hiColl); }
   drawZones(filtering?matched:[]);
   if(fit&&S.fit&&filtering&&matched.length){
     if(matched.length===1) map.setCenter(matched[0].ll,13);
